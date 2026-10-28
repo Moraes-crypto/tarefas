@@ -1,0 +1,235 @@
+/* =================================================================
+   ESTILO NEO-BRUTALISMO / CYBER-POP (COMPLETAMENTE DIFERENTE)
+   ================================================================ */
+:root {
+  --bg-main: #f3f0ff;
+  --card-bg: #ffffff;
+  --accent-neon: #ff5757;     
+  --accent-yellow: #ffde59;    
+  --accent-purple: #7b2cbf;    
+  --text-main: #000000;
+  --border-thick: 3px solid #000000;
+  --shadow-hard: 4px 4px 0px #000000;
+  --shadow-hard-sm: 2px 2px 0px #000000;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace, system-ui, sans-serif; /* Visual retro/industrial */
+  background-color: var(--bg-main);
+  background-image: radial-gradient(#d8b4fe 1.5px, transparent 1.5px);
+  background-size: 24px 24px; /* Fundo quadriculado/pontilhado marcante */
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+/* Painel Principal com bordas grossas e sombra chapada */
+body {
+  width: 100%;
+  margin-left: 245px;
+  text-align: center;
+  max-width: 500px;
+  background-color: var(--card-bg);
+  border: var(--border-thick);
+  border-radius: 12px;
+  box-shadow: 8px 8px 0px #000000;
+  padding: 32px;
+}
+
+/* =================================================================
+   TÍTULO ESTILO POSTER
+   ================================================================ */
+h1 {
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  color: var(--text-main);
+  background-color: var(--accent-yellow);
+  border: var(--border-thick);
+  padding: 10px 14px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-hard-sm);
+  transform: rotate(-1deg); /* Toque lúdico/despojado */
+}
+
+/* =================================================================
+   CAMPOS DE ENTRADA (INPUTS BRUTALISTAS)
+   ================================================================ */
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+  background-color: #ffffff;
+  border: var(--border-thick);
+  border-radius: 6px;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  outline: none;
+  box-shadow: var(--shadow-hard-sm);
+  margin-bottom: 16px;
+  transition: transform 0.1s ease;
+}
+
+input[type="text"]::placeholder {
+  color: #666666;
+  font-weight: 400;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus {
+  background-color: var(--accent-yellow);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+/* =================================================================
+   BOTÃO ADICIONAR (DESTAQUE MÁXIMO)
+   ================================================================ */
+button[onclick*="adicionarTarefa"] {
+  width: 100%;
+  background-color: var(--accent-neon);
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 14px;
+  border: var(--border-thick);
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: var(--shadow-hard);
+  margin-bottom: 28px;
+  transition: all 0.08s ease;
+}
+
+button[onclick*="adicionarTarefa"]:hover {
+  background-color: #ff3b3b;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+button[onclick*="adicionarTarefa"]:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+/* =================================================================
+   LISTA DE TAREFAS E CARTÕES
+   ================================================================ */
+output#listaTarefas {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Estado vazio com visual carimbo/alerta */
+output#listaTarefas:empty::before,
+output#listaTarefas:not(:has(div)) {
+  content: "[!] Nenhuma tarefa no radar.";
+  display: block;
+  text-align: center;
+  color: var(--text-main);
+  font-weight: 700;
+  padding: 24px;
+  background-color: #ffe5e5;
+  border: var(--border-thick);
+  border-radius: 6px;
+  box-shadow: var(--shadow-hard-sm);
+}
+
+/* Cada item de tarefa no formato de bloco sólido */
+output#listaTarefas > div {
+  background-color: #e0f2fe; /* Azulzinho ciano retro */
+  border: var(--border-thick);
+  border-radius: 6px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 700;
+  box-shadow: var(--shadow-hard-sm);
+  transition: transform 0.1s ease;
+}
+
+output#listaTarefas > div:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px #000000;
+  background-color: #bae6fd;
+}
+
+/* Botão Apagar estilo selo/alerta */
+output#listaTarefas > div > button {
+  background-color: var(--text-main);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.08s ease;
+  flex-shrink: 0;
+}
+
+output#listaTarefas > div > button:hover {
+  background-color: #ff5757;
+  color: #000000;
+}
+
+/* =================================================================
+   ACESSIBILIDADE E RESPONSIVIDADE
+   ================================================================ */
+input:focus-visible,
+button:focus-visible {
+  outline: 3px dashed var(--accent-purple);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: #ffffff;
+  }
+
+  h1 {
+    font-size: 1.1rem;
+  }
+
+  output#listaTarefas > div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  output#listaTarefas > div > button {
+    width: 100%;
+    text-align: center;
+  }
+}
